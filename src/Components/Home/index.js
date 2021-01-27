@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Home.css";
 import BlogList from "../BlogList";
+import SidBar from "../SidBar";
 
 const Home = () =>{
 
@@ -19,7 +20,14 @@ const Home = () =>{
 
         const newPosts = blogs.filter(blog => blog.id !== id);
 
-        setBlogs(newPosts);
+        if(newPosts.length > 0){
+
+            setBlogs(newPosts);
+        }
+        else{
+
+            setBlogs(null);
+        }
     }
 
     useEffect(() => {
@@ -35,11 +43,13 @@ const Home = () =>{
     },[])
 
     return (
-
+        
         <div className="Home">
             <BlogList blogs={blogs} title="Post List" handleDelete={handleDelete} />
-            {isPending && <div>Loading...</div>}
+            <SidBar />
+            {isPending && <div className="loading"><span>Loading...</span></div>}
         </div>
+        
     );
 }
 
