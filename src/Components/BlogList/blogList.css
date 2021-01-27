@@ -2,6 +2,7 @@
 .title{
 
     font-size: 22px;
-    padding-bottom: 40px;
+    padding:20px auto;
+    margin-top: 20px;
     color:var( --distaque);
 }

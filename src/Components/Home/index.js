@@ -5,10 +5,11 @@ import BlogList from "../BlogList";
 const Home = () =>{
 
     const data = [
-        {titile: 'Hello Word', body: 'Lorem ipsum....', author: 'Delfino Torres', id:1},
+        {titile: 'Hello Word', body: 'Lorem ipsum....', author: 'Delfino', id:1},
         {titile: 'Api Rest', body: 'Lorem ipsum....', author: 'Artur Mendes', id:2},
-        {titile: 'Cumputer Programmers', body: 'Lorem ipsum....', author: 'Delfino Torres', id:3},
-        {titile: 'Cumputer AI', body: 'Lorem ipsum....', author: 'José Gonsálves', id:4}
+        {titile: 'Cumputer Programmers', body: 'Lorem ipsum....', author: 'Delfino', id:3},
+        {titile: 'Cumputer AI', body: 'Lorem ipsum....', author: 'José Gonsálves', id:4},
+        {titile: 'PaidPaper', body: 'Lorem ipsum....', author: 'Richard Hendricks', id:5}
     ];
 
     const [blogs,setBlogs] = useState(data);
@@ -17,6 +18,7 @@ const Home = () =>{
 
         <div className="Home">
             <BlogList blogs={blogs} title="My Post List" />
+            <BlogList blogs={blogs.filter((blog) => { return blog.author === 'Delfino'})} title="Delfino Posts" />
         </div>
     );
 }
