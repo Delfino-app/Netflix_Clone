@@ -12,7 +12,8 @@ const Home = () =>{
         {titile: 'PaidPaper', body: 'Lorem ipsum....', author: 'Richard Hendricks', id:5}
     ];
 
-    const [blogs,setBlogs] = useState(data);
+    const [blogs,setBlogs] = useState([]);
+    const [isPending,setPending] = useState(true);
 
     const handleDelete = (id) => {
 
@@ -23,14 +24,21 @@ const Home = () =>{
 
     useEffect(() => {
 
-        console.log("Application running...");
+        setTimeout(() => {
 
-    },[blogs])
+            //Carregando os posts em 1 segundo
+            setBlogs(data);
+            setPending(false);
+
+        },1000);
+
+    },[])
 
     return (
 
         <div className="Home">
             <BlogList blogs={blogs} title="Post List" handleDelete={handleDelete} />
+            {isPending && <div>Loading...</div>}
         </div>
     );
 }
