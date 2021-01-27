@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Home.css";
 import BlogList from "../BlogList";
 
@@ -20,6 +20,12 @@ const Home = () =>{
 
         setBlogs(newPosts);
     }
+
+    useEffect(() => {
+
+        console.log("Application running...");
+
+    },[blogs])
 
     return (
 
