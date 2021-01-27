@@ -1,7 +1,7 @@
 
 import './blogList.css';
 
-const BlogList = ({blogs,title}) => {
+const BlogList = ({blogs,title,handleDelete}) => {
 
     return (
        <div className="blog-list">
@@ -11,7 +11,7 @@ const BlogList = ({blogs,title}) => {
                     <h2>{blog.titile}</h2>
                     <p>By {blog.author}</p>
                     <div className="BtnContent">
-                        <button>Delete</button>
+                        <button onClick={() => handleDelete(blog.id)}>Delete</button>
                     </div>
                 </div>
             ))}

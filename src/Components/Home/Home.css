@@ -32,9 +32,9 @@ body{
     padding:10px;
     transition: all .2s ease;
     cursor: pointer;
-    border-radius: 3px;
     margin: 10px auto;
 	background-color: var(--bcgWhite);
+    border-left: 3px solid var(--distaque);
 }
 .blog-preview:hover{
 
@@ -59,9 +59,17 @@ body{
 .BtnContent button{
 
     border: 1px solid var(--distaque);
-    background-color: var(--distaque);
-    color: var(--bcgWhite);
+    background-color: var(--bcgWhite);
+    color: var(--distaque);
     border-radius: 2px;
     padding:5px 10px;
     cursor: pointer;
+    font-weight: 400;
+    transition: all .2s ease;
+}
+
+.BtnContent button:hover{
+
+    background-color: var(--distaque);
+    color: var(--bcgWhite);
 }
