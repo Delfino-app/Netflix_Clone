@@ -1,54 +1,73 @@
 import { useState, useEffect } from "react";
 import "./Home.css";
-import BlogList from "../BlogList";
-import SidBar from "../SidBar";
-
+import db from "../../data/index";
+import Movie from "../Movie";
+import RealesedMovie from "../RealesedMovie";
+import NavBar from "../NavBar";
 const Home = () =>{
 
-    const data = [
-        {titile: 'Hello Word', body: 'Lorem ipsum....', author: 'Delfino', id:1},
-        {titile: 'Api Rest', body: 'Lorem ipsum....', author: 'Artur Mendes', id:2},
-        {titile: 'Cumputer Programmers', body: 'Lorem ipsum....', author: 'Delfino', id:3},
-        {titile: 'Cumputer AI', body: 'Lorem ipsum....', author: 'José Gonsálves', id:4},
-        {titile: 'PaidPaper', body: 'Lorem ipsum....', author: 'Richard Hendricks', id:5}
-    ];
-
-    const [blogs,setBlogs] = useState([]);
-    const [isPending,setPending] = useState(true);
-
-    const handleDelete = (id) => {
-
-        const newPosts = blogs.filter(blog => blog.id !== id);
-
-        if(newPosts.length > 0){
-
-            setBlogs(newPosts);
-        }
-        else{
-
-            setBlogs(null);
-        }
-    }
+    const [list,setList] = useState([]);
+    const [realesedData,setRealesedData] = useState(null);
+    const [navBlack,setBlack] = useState(false);
 
     useEffect(() => {
 
-        setTimeout(() => {
-            //Carregando os posts em 1 segundo
-            setBlogs(data);
-            setPending(false);
+        const getList = async () => {
 
-        },1000);
+            let data = await db.getHome();
+
+           setList(data);
+
+           //Pegando o realesedData
+           let realesed = data.filter(i => i.slug === 'Action');
+           let random = Math.floor(Math.random() * (realesed[0].itens.length -1));
+           let movie = realesed[0].itens[random];
+
+           setRealesedData(movie);
+            
+        };
+
+        getList();
+
     },[])
+
+    useEffect(() => {
+
+        const scrollListener = () => {
+
+            if(window.scrollY > 10){
+
+                setBlack(true);
+            }
+            else{
+
+                setBlack(false);
+            }
+
+        }
+
+        window.addEventListener('scroll', scrollListener);
+
+        return () => {
+            
+            window.removeEventListener('scroll',scrollListener);
+        }
+
+    }, [])
 
     return (
         
-        <div className="Home">
-            <BlogList blogs={blogs} title="Post List" handleDelete={handleDelete} />
-            <SidBar />
-            {isPending && <div className="loading"><span>Loading...</span></div>}
+        <div className="page">
+            <NavBar black={navBlack} />
+            {realesedData && <RealesedMovie item={realesedData} />}
+            <section className="lists">
+                {list.map((item,key) => (
+                   <Movie key={key} title={item.title} items={item.itens} />
+                ))}
+            </section>
         </div>
         
-    );
+    ); 
 }
 
 export default Home;
