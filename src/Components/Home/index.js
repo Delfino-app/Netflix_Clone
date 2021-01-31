@@ -33,13 +33,11 @@ const Home = () =>{
     useEffect(() => {
 
         setTimeout(() => {
-
             //Carregando os posts em 1 segundo
             setBlogs(data);
             setPending(false);
 
         },1000);
-
     },[])
 
     return (
