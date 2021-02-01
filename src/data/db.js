@@ -153,6 +153,15 @@ export default {
             posterBack:`${config}/assets/poster/goodDoctorVerso.jpg`,
         },
         {
+            id:60,
+            title:"On My Block",
+            discription:"A história de jovens amigos que têm as suas vidas ameaçadas pela criminalidade vivida no bairro, lutam para resgatar um amigo de uma gangue local.",
+            realesed:"2019",
+            genero:"Drama, Acção",
+            poster:`${config}/assets/poster/onMyBlockCapa.jpg`,
+            posterBack:`${config}/assets/poster/onMyBlockVerso.jpg`,
+        },
+        {
             id:38,
             title:"Other 8",
             discription:"The early life of child genius Sheldon Cooper, later seen in The Big Bang Theory.",

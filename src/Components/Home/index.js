@@ -19,7 +19,7 @@ const Home = () =>{
            setList(data);
 
            //Pegando o realesedData
-           let realesed = data.filter(i => i.slug === 'Action');
+           let realesed = data.filter(i => i.slug === 'Drama');
            let random = Math.floor(Math.random() * (realesed[0].itens.length -1));
            let movie = realesed[0].itens[random];
 

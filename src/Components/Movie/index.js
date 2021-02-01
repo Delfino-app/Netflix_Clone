@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import "./movie.css";
 
 const Movie = ({title,items}) =>{
-
-    console.log(items); 
-
+    
     return (
          
         <div className="movieRow">
